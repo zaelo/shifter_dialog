@@ -1,0 +1,7 @@
+services:
+  shifter_dialog.menus_list:
+    class: Drupal\shifter_dialog\MenusList
+    arguments: ['@config.factory', '@menu.link_tree']
+  shifter_dialog.tree_manipulators:
+    class:  Drupal\shifter_dialog\ShifterDialogTreeManipulators
+    parent: menu.default_tree_manipulators

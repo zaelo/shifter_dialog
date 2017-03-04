@@ -1,0 +1,5 @@
+shifter_dialog.settings:
+  title: Shifter Dialog settings
+  parent: system.admin_config_ui
+  description: 'Shifter dialog global settings.'
+  route_name: shifter_dialog.settings

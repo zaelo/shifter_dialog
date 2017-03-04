@@ -1,0 +1,9 @@
+shifter_dialog.shifter:
+  css:
+    component:
+      css/shifter.css: {}
+  js:
+    js/shifter.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings

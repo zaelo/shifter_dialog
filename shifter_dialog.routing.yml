@@ -1,0 +1,14 @@
+shifter_dialog.block:
+  path: '/shifter-dialog-block'
+  defaults:
+    _controller: '\Drupal\shifter_dialog\Controller\ShifterDialogController::renderBlock'
+    _title: 'Verifying the eligibility of access to the results'
+  requirements:
+    _permission: 'use shifter dialog'
+shifter_dialog.settings:
+  path: '/admin/config/user-interface/shifter-dialog-settings'
+  defaults:
+    _form: 'Drupal\shifter_dialog\Form\ShifterDialogSettingsForm'
+    _title: 'Shifter Dialog settings'
+  requirements:
+    _permission: 'administer site configuration'

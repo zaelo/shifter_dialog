@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * @file
+ * Exposes global functionality for the shifter dialog.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function shifter_dialog_theme(array &$attachments) {
+  return array(
+    'shifter_dialog_ajax_display' => array(
+      'render element' => 'elements',
+    ),
+  );
+}
+
+/**
+ * Prepares variables for Shifter Dialog template.
+ *
+ * Default template: shifter-dialog-ajax-display.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the properties of the element.
+ */
+function template_preprocess_shifter_dialog_ajax_display(array &$variables) {
+  $variables['content'] = $variables['elements']['content'];
+}
+
+/**
+ * Implements hook_page_top().
+ */
+function shifter_dialog_page_top(array &$page_top) {
+  if (\Drupal::currentUser()->hasPermission('use shifter dialog')) {
+    $build = array();
+
+    $block_plugin_manager = \Drupal::service('plugin.manager.block');
+    $shifter_dialog_block = $block_plugin_manager->createInstance('shifter_dialog_form_block', array());
+    $build['content'] = $shifter_dialog_block->build();
+
+    $build['#theme'] = 'shifter_dialog_ajax_display';
+
+    $page_top['shifter_block_ajax'] = $build;
+  }
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function shifter_dialog_page_attachments(array &$attachments) {
+  if (\Drupal::currentUser()->hasPermission('use shifter dialog')) {
+    $attachments['#attached']['library'][] = 'shifter_dialog/shifter_dialog.shifter';
+  }
+}

@@ -1,0 +1,23 @@
+shifter_dialog.settings:
+  type: config_object
+  label: 'Shifter Dialog settings'
+  mapping:
+    results:
+      type: mapping
+      label: 'Results'
+      mapping:
+        number_to_return:
+          type: integer
+          label: 'Number of results to return'
+        menus_depth:
+          type: integer
+          label: 'Maximum search depth'
+        no_matches_sentence:
+          type: string
+          label: 'No matches sentence'
+    menus_names:
+      type: sequence
+      label: 'Menus names'
+      sequence:
+        type: string
+        label: 'Menu name'
